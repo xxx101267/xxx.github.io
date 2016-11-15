@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我的搬运</title>
+		<style>
+		ul{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+			#wrap{
+				width:800px;
+				height:300px;
+				border: 5px solid grey;
+				margin: 0 auto;
+			}
+			.text{
+				width:320px;
+				height:280px;
+				background-color: powderblue;
+				margin: 10px;
+				float: left;
+			}
+			#md{
+				float: left;
+				width:120px;
+				text-align: center;
+			}
+			#md p{
+				background-color: orange;
+				width:120px;
+				line-height: 40px;
+				font-weight: bold;
+			}
+			#boxL{
+				background-color: lightgrey;
+			}
+			#jdt li{
+				float: left;
+				width:10px;
+				height:10px;
+				background-color: gray;
+				margin-right: 2px;
+			}
+			#jdt .orange{
+				background-color: orange;
+			}
+		</style>
+	</head>
+	<body>
+		<div  id="wrap">
+			<div class="text" id="boxL">合肥施法速度放缓三角,符号赛季得,分还算发生大幅速度分解释放激,素发货速度解放好多是否四季,和风江苏大丰</div>
+			<div id="md">
+				<p>把文字向右移</p>
+				<span>0/0</span>
+				<ul id="jdt">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="text" id="boxR"></div>
+		</div>
+		
+		<script>
+			var btn=document.querySelectorAll("#md p")[0];
+			var boxL=document.getElementById("boxL");
+			var boxR=document.getElementById("boxR");
+			var num=document.querySelectorAll("#md span")[0];
+			var lis=document.querySelectorAll("#jdt li");
+			var jdt=document.getElementById("jdt");
+			
+			var timer=null;
+			btn.onclick=function(){
+				timer=setInterval(function(){
+					var str0="";
+					var str1="";
+					
+					var innerL=boxL.innerHTML;
+					var innerR=boxR.innerHTML;
+					
+					str0=innerL.slice(1);
+					boxL.innerHTML=str0;
+					
+					var text=innerL.charAt(0);
+					str1=text;
+					boxR.innerHTML+=str1;
+					
+					num.innerHTML=innerR.length+"/"+( innerR.length+innerL.length );
+					
+					for (var i = 0; i < lis.length; i++) {
+						lis[i].className = "";
+					}
+					lis[innerR.length%lis.length].className = "orange";
+					
+					if(innerL==""){
+						clearInterval(timer);
+						jdt.style.opacity=0;
+					}
+				},100)
+			}
+		</script>
+	</body>
+</html>
